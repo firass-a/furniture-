@@ -5,7 +5,7 @@ class mybutton extends StatelessWidget {
   final String txt;
   Function onP;
 
-  mybutton(this.txt, this.onP);
+  mybutton(this.txt, this.onP, {super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Features extends StatelessWidget {
-  const Features(this.text);
+  const Features(this.text, {super.key});
 
   final String text;
   @override

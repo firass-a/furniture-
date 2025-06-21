@@ -1,9 +1,14 @@
-
 import 'package:flutter/material.dart';
 import 'package:meublili/widgets/features.dart';
 
 class RoleCard extends StatelessWidget {
-  const RoleCard(this.role, this.subrole, this.discription,this.tasks, {super.key});
+  const RoleCard(
+    this.role,
+    this.subrole,
+    this.discription,
+    this.tasks, {
+    super.key,
+  });
 
   final String? role;
   final String? subrole;
@@ -39,7 +44,7 @@ class RoleCard extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 5),
             Text(
               role!,
               style: TextStyle(
