@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:meublili/providers/categoriesprovider.dart';
 import 'package:meublili/widgets/btbar.dart';
 
-class BuyerHomePage extends StatelessWidget {
+class BuyerHomePage extends ConsumerWidget {
   const BuyerHomePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final categories = ref.watch(categoriesProvider);
     return SafeArea(
       child: Scaffold(
         bottomNavigationBar: BottomAppBar(
@@ -14,7 +17,7 @@ class BuyerHomePage extends StatelessWidget {
         ),
 
         body: Padding(
-          padding: const EdgeInsets.all(15.0),
+          padding: const EdgeInsets.all(25.0),
           child: Column(
             children: [
               Row(
@@ -55,7 +58,47 @@ class BuyerHomePage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 15),
-              
+              Text(
+                "Our categories :",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
+              ),
+              SizedBox(height: 15),
+              Expanded(
+                child: GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    crossAxisSpacing: 5,
+                    mainAxisSpacing: 5,
+                  ),
+                  itemCount: categories.length,
+                  itemBuilder: (context, index) {
+                    final ctg = categories[index];
+
+                    return Container(
+                      height: 100,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        color: Colors.grey[200],
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(ctg.categoImg!, height: 45, width: 45),
+                            Text(ctg.ctgName),
+                            Text("Items :${ctg.itemsList.length}"),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
             ],
           ),
         ),

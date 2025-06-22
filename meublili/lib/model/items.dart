@@ -1,8 +1,7 @@
-import 'dart:ffi';
 
 class Items {
   String? _itemName;
-  Float? _itemPrice;
+  double? _itemPrice;
   String? _itemDescription;
 
   Items(this._itemName, this._itemPrice, this._itemDescription);
@@ -18,7 +17,7 @@ class Items {
     _itemName = name;
   }
 
-  void setPrice(Float price) {
+  void setPrice(double price) {
     _itemPrice = price;
   }
 
