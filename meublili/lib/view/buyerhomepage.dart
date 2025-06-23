@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meublili/providers/categoriesprovider.dart';
+import 'package:meublili/providers/itemsprovider.dart';
 import 'package:meublili/widgets/btbar.dart';
+import 'package:meublili/widgets/categories.dart';
+import 'package:meublili/widgets/featureditems.dart';
 
 class BuyerHomePage extends ConsumerWidget {
   const BuyerHomePage({super.key});
@@ -9,6 +12,7 @@ class BuyerHomePage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final categories = ref.watch(categoriesProvider);
+    final items = ref.watch(itemsProvider);
     return SafeArea(
       child: Scaffold(
         bottomNavigationBar: BottomAppBar(
@@ -19,6 +23,7 @@ class BuyerHomePage extends ConsumerWidget {
         body: Padding(
           padding: const EdgeInsets.all(25.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -60,6 +65,7 @@ class BuyerHomePage extends ConsumerWidget {
               SizedBox(height: 15),
               Text(
                 "Our categories :",
+                textAlign: TextAlign.start,
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
@@ -67,36 +73,36 @@ class BuyerHomePage extends ConsumerWidget {
                 ),
               ),
               SizedBox(height: 15),
+              Catgories(categories: categories),
+              SizedBox(height: 20),
               Expanded(
-                child: GridView.builder(
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                    crossAxisSpacing: 5,
-                    mainAxisSpacing: 5,
-                  ),
-                  itemCount: categories.length,
-                  itemBuilder: (context, index) {
-                    final ctg = categories[index];
-
-                    return Container(
-                      height: 100,
-                      width: 100,
-                      decoration: BoxDecoration(
-                        color: Colors.grey[200],
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(ctg.categoImg!, height: 45, width: 45),
-                            Text(ctg.ctgName),
-                            Text("Items :${ctg.itemsList.length}"),
-                          ],
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Featured",
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
                         ),
-                      ),
-                    );
-                  },
+                        TextButton(
+                          onPressed: () {},
+                          child: Text(
+                            "See all",
+                            style: TextStyle(
+                              color: Colors.orange,
+                              fontSize: 15,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    FeaturedItems(items: items),
+                  ],
                 ),
               ),
             ],

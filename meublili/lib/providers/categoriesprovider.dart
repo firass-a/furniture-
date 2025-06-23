@@ -6,13 +6,23 @@ import 'package:meublili/model/items.dart';
 
 List<Category> catgories = [
   Category('assets/chair.png', "Chairs", [
-    Items("_itemName", 10.0, "_itemDescription"),
+    Items("Korssi", "chaires" , 10.0, "_itemDescription" ),
   ]),
-  Category('assets/table.png', "Tables", []),
-  Category('assets/seater-sofa.png', "Sofas", []),
-  Category('assets/bed.png', "Beds", []),
-  Category('assets/warehouse.png', "Storage", []),
-  Category('assets/lamp.png', "Lighting", []),
+  Category('assets/table.png', "Tables", [
+    Items("Tabla", "Tables" , 10.0, "_itemDescription"),
+  ]),
+  Category('assets/seater-sofa.png', "Sofas", [
+    Items("_itemName" , "chaires" ,10.0, "_itemDescription"),
+  ]),
+  Category('assets/bed.png', "Beds", [
+    Items("_itemName", "chaires" ,10.0, "_itemDescription"),
+  ]),
+  Category('assets/warehouse.png', "Storage", [
+    Items("_itemName", "chaires" ,10.0, "_itemDescription"),
+  ]),
+  Category('assets/lamp.png', "Lighting", [
+    Items("_itemName", "chaires" ,10.0, "_itemDescription"),
+  ]),
 ];
 
 final categoriesProvider = Provider((ref) {

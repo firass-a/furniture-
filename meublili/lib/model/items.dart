@@ -1,15 +1,16 @@
-
 class Items {
   String? _itemName;
+ final String? _category;
   double? _itemPrice;
   String? _itemDescription;
 
-  Items(this._itemName, this._itemPrice, this._itemDescription);
+  Items(this._itemName, this._category,this._itemPrice, this._itemDescription);
 
   //getters
-  void get itemName => _itemName;
-  void get itemPrice => _itemPrice;
-  void get itemDescription => _itemDescription;
+  String? get itemName => _itemName;
+  double? get itemPrice => _itemPrice;
+  String? get itemDescription => _itemDescription;
+  String? get itCat => _category;
 
   //setters
 

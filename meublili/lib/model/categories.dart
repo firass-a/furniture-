@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+
 import 'package:meublili/model/items.dart';
 
 class Category {
